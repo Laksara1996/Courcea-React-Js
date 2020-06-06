@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Col, Row, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -19,7 +19,8 @@ class Contact extends Component {
 	handleSubmit(values) {
 		console.log('Current State is: ' + JSON.stringify(values));
 		alert('Current State is: ' + JSON.stringify(values));
-		this.props.resetFeedbackForm( );
+		this.props.resetFeedbackForm();
+		this.props.postFeedback(values);
 	}
 
 	render() {
@@ -59,7 +60,7 @@ class Contact extends Component {
 							<a role="button" className="btn btn-primary" href="tel:+85212345678">
 								<i className="fa fa-phone" /> Call
 							</a>
-							<a role="button" className="btn btn-info">
+							<a role="button" className="btn btn-info" href="tel:+85212345678">
 								<i className="fa fa-skype" /> Skype
 							</a>
 							<a role="button" className="btn btn-success" href="mailto:confusion@food.net">
@@ -199,7 +200,7 @@ class Contact extends Component {
 												name="agree"
 												className="form-check-input"
 											/>{' '}
-											<strong>May we contact you?</strong>
+											 <strong>May we contact you?</strong>
 										</Label>
 									</div>
 								</Col>
